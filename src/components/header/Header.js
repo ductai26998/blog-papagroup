@@ -2,6 +2,7 @@ import React from "react";
 import './Header.scss';
 
 import NavGuest from '../navbars/navGuest/NavGuest';
+import HotTopic from "../subTitleHotTopic/HotTopic";
 
 class Header extends React.Component {
   constructor() {
@@ -19,10 +20,7 @@ class Header extends React.Component {
         <hr className="header_boundary"></hr>
         <div className="top-topic">
           <div className="top-topic_left">
-            <h7 className="hot-topic_sub-title">
-              <div className="disk"></div>
-              HOT TOPIC
-            </h7>
+            <HotTopic></HotTopic>
             <h4 className="hot-topic_title">
               Graduate employability in a changing world
             </h4>

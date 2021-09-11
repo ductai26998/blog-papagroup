@@ -1,9 +1,27 @@
 $redColor: #ec440c;
 $geyColor: #c5c3c3;
 $blueColor: #587c8b;
+$coverColor: #f2ece8;
 
-@mixin textStyle($color: #fff, $size: 10px, $family: sans-serif) {
+* {
+    letter-spacing: 0.5;
+    line-height: 1.6;
+}
+
+@mixin textStyle($color: #fff, $size: 10px, $family: sans-serif, $weight: 400) {
     color: $color;
     font-size: $size;
     font-family: $family;
+    font-weight: $weight;
+}
+
+@mixin leftPage {
+    padding-left: 5vw;
+    padding-right: 25vw;
+    margin-right: 20px;
+}
+
+@mixin rightPage {
+    width: 20vw;
+    padding-right: 2vw;
 }

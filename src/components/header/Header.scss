@@ -3,6 +3,7 @@
 .header {
   display: flex;
   flex-direction: column;
+  position: relative;
   padding-top: 20px;
   background-image: url("../../assets/images/cover1.jpg");
   background-size: cover;
@@ -29,31 +30,16 @@
     justify-content: space-between;
     height: 250px;
     width: 100%;
-    padding-left: 5vw;
-    padding-right: 5vw;
+    color: #fff;
   }
 
   .top-topic * {
     line-height: 1.6;
-    color: #fff;
   }
 
   .top-topic_left {
-    width: 35vw;
-    .hot-topic_sub-title {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      @include textStyle($geyColor, 12px);
-
-      .disk {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: $redColor;
-        margin-right: 5px;
-      }
-    }
+    width: 60vw;
+    @include leftPage;
 
     .hot-topic_title {
       font-family: serif;
@@ -62,7 +48,7 @@
   }
 
   .top-topic_right {
-    width: 35vw;
+    @include rightPage;
   }
 
   .top-topic_right_item {
@@ -73,9 +59,7 @@
   }
 
   .right_item_title {
-    font-family: serif;
-    font-size: 17px;
-    font-weight: 600;
+    @include textStyle(#fff, 15px, serif, 600);
   }
 }
 

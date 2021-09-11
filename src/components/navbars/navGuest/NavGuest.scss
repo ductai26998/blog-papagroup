@@ -1,3 +1,9 @@
+@import '../../../assets/scss/style.scss';
+
+.nav-guest {
+    @include leftPage;
+}
+
 .navbar-nav {
     width: 100%;
     display: flex;

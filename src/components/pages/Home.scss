@@ -1,0 +1,21 @@
+@import '../../assets/scss/style.scss';
+
+.home {
+    display: flex;
+    height: 100%;
+    background-color: $coverColor;
+    padding-top: 50px;
+}
+
+.home_left {
+    @include leftPage;
+    .hot-topic {
+        @include rightPage;
+    }
+
+}
+
+.home_middle {
+    background-image: url('../../assets/images/middle.jpg');
+}
+

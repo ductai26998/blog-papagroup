@@ -1,0 +1,23 @@
+@import '../../assets/scss/style.scss';
+
+.blog-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    
+    .blog-title {
+        @include textStyle(#000, 15px, serif, 600);
+    }
+
+    .blog-info {
+
+    }
+}
+
+.blog-info_time {
+    @include textStyle($geyColor, 12px);
+}
+
+.blog-info_author {
+    @include textStyle($blueColor, 12px);
+}

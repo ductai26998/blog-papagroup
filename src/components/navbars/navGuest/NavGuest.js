@@ -9,7 +9,7 @@ class NavGuest extends React.Component {
 
   render() {
     return (
-      <div className="nav-guest container">
+      <div className="nav-guest">
         <nav className="navbar">
           <ul className="navbar-nav">
             <li className="nav-item">
