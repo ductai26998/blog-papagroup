@@ -1,0 +1,9 @@
+$redColor: #ec440c;
+$geyColor: #c5c3c3;
+$blueColor: #587c8b;
+
+@mixin textStyle($color: #fff, $size: 10px, $family: sans-serif) {
+    color: $color;
+    font-size: $size;
+    font-family: $family;
+}
