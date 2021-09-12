@@ -1,16 +1,17 @@
-@import '../../assets/scss/style.scss';
+@import "../../assets/scss/style.scss";
 
 .blog-item {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
-    
+    width: 100%;
+
     .blog-title {
-        @include textStyle(#000, 15px, serif, 600);
+        @include textStyle(#000, 13px, 'Libre Baskerville', 600);
+        line-height: 1.6;
     }
 
     .blog-info {
-
     }
 }
 
