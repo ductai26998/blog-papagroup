@@ -1,0 +1,15 @@
+@import '../../../assets/scss/style.scss';
+
+.btn-container {
+    display: flex;
+    align-items: center;
+}
+
+.btn-container * {
+    color: $redColor;
+}
+
+.btn-container:hover a:hover {
+    color: $blueColor;
+    border: none;
+}
