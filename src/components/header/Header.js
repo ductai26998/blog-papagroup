@@ -3,6 +3,8 @@ import './Header.scss';
 
 import NavGuest from '../navbars/navGuest/NavGuest';
 import HotTopic from "../subTitleHotTopic/HotTopic";
+import LoginBtn from "../pages/login/LoginBtn";
+import RegisterBtn from "../pages/register/RegisterBtn";
 
 class Header extends React.Component {
   constructor() {
@@ -16,7 +18,13 @@ class Header extends React.Component {
         <div className="logo">
           <h1 className="logo-text">STORY</h1>
         </div>
-        <NavGuest></NavGuest>
+        <div className className="header-nav">
+          <NavGuest></NavGuest>
+          <div className="header-nav_btn">
+            <LoginBtn></LoginBtn>
+            <RegisterBtn></RegisterBtn>
+          </div>
+        </div>
         <hr className="header_boundary"></hr>
         <div className="top-topic">
           <div className="top-topic_left">
@@ -33,7 +41,7 @@ class Header extends React.Component {
               </h4>
             </div>
             <div className="top-1 top-topic_right_item">
-              <h7 className="right_item_sub-title">TOP 1</h7>
+              <h7 className="right_item_sub-title">TOP ONE</h7>
               <h4 className="right_item_title">
                 Graduate employability in a changing world
               </h4>
