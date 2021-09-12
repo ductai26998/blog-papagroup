@@ -1,14 +1,19 @@
-$redColor: #ec440c;
-$geyColor: #c5c3c3;
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Libre+Baskerville:wght@700&family=Varela+Round&display=swap');
+
+$redColor: #dc3545;
+$geyColor: #b6b5b5;
 $blueColor: #587c8b;
 $coverColor: #f2ece8;
 
 * {
-    letter-spacing: 0.5;
+    letter-spacing: 0px;
     line-height: 1.6;
+    text-decoration: none !important;
+    box-sizing: border-box;
+    font-family: 'Acme';
 }
 
-@mixin textStyle($color: #fff, $size: 10px, $family: sans-serif, $weight: 400) {
+@mixin textStyle($color: #fff, $size: 10px, $family: 'Acme', $weight: 400) {
     color: $color;
     font-size: $size;
     font-family: $family;
@@ -16,12 +21,13 @@ $coverColor: #f2ece8;
 }
 
 @mixin leftPage {
-    padding-left: 5vw;
-    padding-right: 25vw;
+    margin-left: 5vw;
+    // padding-right: 25vw;
+    width: 70vw;
     margin-right: 20px;
 }
 
 @mixin rightPage {
-    width: 20vw;
+    width: 25vw;
     padding-right: 2vw;
 }
