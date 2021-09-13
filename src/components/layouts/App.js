@@ -1,30 +1,33 @@
 import React from "react";
 import './App.scss';
 
-import Header from '../header/Header';
+import HaveHeader from "./haveHeader/HaveHeader";
+import NoHeader from "./noHeader/NoHeader";
+
+import { useLocation } from "react-router-dom";
+
 import Home from "../pages/Home";
-import { BrowserRouter, Route } from "react-router-dom";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 
-class App extends React.Component {
-  constructor() {
-    super();
+const LayoutHaveHeader = HaveHeader(Home);
+const LayoutNoHeader = NoHeader(Login, Register)
 
-  }
+function GetCurrentRoute() {
+  const location = useLocation();
+  return location.pathname
+}
 
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="app">
-          <Header></Header>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/register" exact component={Register} />
-        </div>
-      </BrowserRouter>
-    );
-  }
+// higher-order function to can use Hooks
+function App() {
+  let currentRoute = GetCurrentRoute();
+  let haveHeader = (currentRoute != '/login' && currentRoute != '/register') ? true : false; 
+  return (
+    <div className="app">
+      {haveHeader && <LayoutHaveHeader></LayoutHaveHeader>}
+      {!haveHeader && <LayoutNoHeader></LayoutNoHeader>}
+    </div>
+  );
 }
 
 export default App;

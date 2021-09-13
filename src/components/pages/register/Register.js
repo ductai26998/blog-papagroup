@@ -30,10 +30,9 @@ class Register extends React.Component {
               </div>
             </form>
             <h6 className="or">or</h6>
-            <p className="new-user">
+            <p className="haved-account">
               If you haved account?
-              <span className="to-register"
-              ><Link to="/register">Sign in here</Link></span
+              <span><Link to="/login">Sign in here</Link></span
               >
             </p>
           </div>

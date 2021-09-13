@@ -9,10 +9,10 @@ class HotTopic extends React.Component {
 
   render() {
     return (
-      <h7 className="hot-topic_sub-title">
+      <h6 className="hot-topic_sub-title">
         <div className="disk"></div>
         <span className="text">HOT TOPIC</span>
-      </h7>
+      </h6>
     );
   }
 }
