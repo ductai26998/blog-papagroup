@@ -1,6 +1,8 @@
 import React from "react";
 import './NavGuest.scss';
 
+import { NavLink } from "react-router-dom";
+
 class NavGuest extends React.Component {
   constructor() {
     super();
@@ -13,13 +15,13 @@ class NavGuest extends React.Component {
         <nav className="navbar">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">Home</a>
+              <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-            <a className="nav-link" href="#">Blogs</a>
+            <NavLink className="nav-link" to="/blogs">Blogs</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Contact</a>
+              <NavLink className="nav-link" to="/contact">Contact</NavLink>
             </li>
           </ul>
         </nav>

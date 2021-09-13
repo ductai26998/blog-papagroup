@@ -11,9 +11,7 @@ class LoginBtn extends React.Component {
   render() {
     return (
       <div className="btn-container">
-        {/* <BrowserRouter> */}
           <Link to="/login">Sign In</Link>
-        {/* </BrowserRouter> */}
       </div>
     );
   }

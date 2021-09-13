@@ -11,9 +11,7 @@ class RegisterBtn extends React.Component {
   render() {
     return (
       <div className="btn-container">
-        <BrowserRouter>
           <Link to="/register">Sign up</Link>
-        </BrowserRouter>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Register.scss';
 
 class Register extends React.Component {
@@ -18,13 +18,14 @@ class Register extends React.Component {
         <div className="mycontainer">
           <div className="container__left"></div>
           <div className="container__right">
+            <Link to="/" style={{width: "110px"}}><h5 className="go-home">Go to Home</h5></Link>
             <h3 className="title">STORY</h3>
             <h5 className="welcome">Create new account</h5>
             <form>
-              <label for="username">Email</label>
-              <input type="text" value={this.state.email} placeholder="Email" />
-              <label for="password">Password</label>
-              <input type="password" value={this.state.password} placeholder="Password" />
+              <label>Username</label>
+              <input type="text" placeholder="Email" />
+              <label>Password</label>
+              <input type="password" placeholder="Password" />
               <div className="submit">
                 <button type="submit">Sign up</button>
               </div>
