@@ -15,9 +15,9 @@ class Login extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="login-container">
-          <div className="login-container__left"></div>
-          <div className="login-container__right">
+        <div className="mycontainer">
+          <div className="container__left"></div>
+          <div className="container__right">
             <h3 className="title">STORY</h3>
             <h5 className="welcome">Welcome to STORY</h5>
             <form>
