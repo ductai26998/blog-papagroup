@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Link } from "react-router-dom";
-import './RegisterBtn.scss';
+import './Register.scss';
 
-class RegisterBtn extends React.Component {
+class Register extends React.Component {
   constructor() {
     super();
 
@@ -11,12 +11,10 @@ class RegisterBtn extends React.Component {
   render() {
     return (
       <div className="btn-container">
-        <BrowserRouter>
-          <Link to="/register">Sign up</Link>
-        </BrowserRouter>
+          Register
       </div>
     );
   }
 }
 
-export default RegisterBtn;
+export default Register;

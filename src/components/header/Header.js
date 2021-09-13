@@ -3,8 +3,8 @@ import './Header.scss';
 
 import NavGuest from '../navbars/navGuest/NavGuest';
 import HotTopic from "../subTitleHotTopic/HotTopic";
-import LoginBtn from "../pages/login/LoginBtn";
-import RegisterBtn from "../pages/register/RegisterBtn";
+import LoginBtn from "../buttons/loginBtn/LoginBtn";
+import RegisterBtn from "../buttons/registerBtn/RegisterBtn";
 
 class Header extends React.Component {
   constructor() {

@@ -1,15 +1,22 @@
 import React from "react";
-import './LoginBtn.css';
+import { BrowserRouter, Link } from "react-router-dom";
+import './LoginBtn.scss';
 
 class LoginBtn extends React.Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-    }
+  }
 
-    render() {
-        return (<h1>LoginBtn</h1>);
-    }
+  render() {
+    return (
+      <div className="btn-container">
+        {/* <BrowserRouter> */}
+          <Link to="/login">Sign In</Link>
+        {/* </BrowserRouter> */}
+      </div>
+    );
+  }
 }
 
 export default LoginBtn;
