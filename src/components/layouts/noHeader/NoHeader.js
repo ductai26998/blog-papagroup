@@ -7,7 +7,7 @@ function NoHeader(Login, Register) {
   return class extends React.Component {
     render() {
       return (
-        <div className="app">
+        <div>
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
         </div>
