@@ -4,83 +4,61 @@ import image1 from '../../../assets/images/middle.jpg';
 
 import BlogItem from "../../blogItem/BlogItem";
 import { BrowserRouter, NavLink, Link } from "react-router-dom";
+import axios from "axios";
 
 class Blogs extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      // blogs: [],
+      lastNewBlogs: [],
+      popular: []
+    }
   }
 
+  // componentDidMount() {
+  //   this.getState();
+  // }
+
+  // getState() {
+  //   axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/blogs')
+  //     .then((res) => {
+  //       let numOfBlogs = res.data.length;
+  //       let popular = res.data.filter((blog) => {
+  //         return blog.isPopular;
+  //       });
+  //       this.setState({
+  //         blogs: [...res.data],
+  //         lastNewBlogs: [...res.data.slice(numOfBlogs - 4)],
+  //         popular: [...popular]
+  //       });
+  //     });
+  // }
+
   render() {
+    // const { blogs, lastNewBlogs } = this.state;
+    const { blogs } = this.props;
+    let numOfBlogs = blogs.length;
+    const lastNewBlogs = [...blogs.slice(numOfBlogs - 4)];
+
     return (
       <div className="blogs">
         <div className="blogs_left">
-          <div className="blogs_left_item">
-            <img className="item-img" src={image1} />
-            <BlogItem>
-              <p className="blog-content">“Mô tả em năm 100 tuổi.” Đó là đề bài Mỹ thuật của một
-               trường tiểu học nọ. Với thái độ thẳng thắn và duy lý, một em học sinh vẽ vào giữa 
-               bức tranh bia mộ của chính mình. Trong khi cô giáo cho tác phẩm điểm 2 và nói cần 
-               xem lại đề bài, tôi thấy tác phẩm của em học sinh đã chạm tới một vấn đề triết học 
-               lớn: Trí tưởng tượng của con người về tương lai của chính mình đã được sản tạo ra 
-               như thế nào?... <Link>See More</Link> </p>
-            </BlogItem>
-          </div>
-          <div className="blogs_left_item">
-            <img className="item-img" src={image1} />
-            <BlogItem>
-              <p className="blog-content">“Mô tả em năm 100 tuổi.” Đó là đề bài Mỹ thuật của một
-               trường tiểu học nọ. Với thái độ thẳng thắn và duy lý, một em học sinh vẽ vào giữa 
-               bức tranh bia mộ của chính mình. Trong khi cô giáo cho tác phẩm điểm 2 và nói cần 
-               xem lại đề bài, tôi thấy tác phẩm của em học sinh đã chạm tới một vấn đề triết học 
-               lớn: Trí tưởng tượng của con người về tương lai của chính mình đã được sản tạo ra 
-               như thế nào?... <Link>See More</Link> </p>
-            </BlogItem>
-          </div>
-          <div className="blogs_left_item">
-            <img className="item-img" src={image1} />
-            <BlogItem>
-              <p className="blog-content">“Mô tả em năm 100 tuổi.” Đó là đề bài Mỹ thuật của một
-               trường tiểu học nọ. Với thái độ thẳng thắn và duy lý, một em học sinh vẽ vào giữa 
-               bức tranh bia mộ của chính mình. Trong khi cô giáo cho tác phẩm điểm 2 và nói cần 
-               xem lại đề bài, tôi thấy tác phẩm của em học sinh đã chạm tới một vấn đề triết học 
-               lớn: Trí tưởng tượng của con người về tương lai của chính mình đã được sản tạo ra 
-               như thế nào?... <Link>See More</Link> </p>
-            </BlogItem>
-          </div>
-          <div className="blogs_left_item">
-            <img className="item-img" src={image1} />
-            <BlogItem>
-              <p className="blog-content">“Mô tả em năm 100 tuổi.” Đó là đề bài Mỹ thuật của một
-               trường tiểu học nọ. Với thái độ thẳng thắn và duy lý, một em học sinh vẽ vào giữa 
-               bức tranh bia mộ của chính mình. Trong khi cô giáo cho tác phẩm điểm 2 và nói cần 
-               xem lại đề bài, tôi thấy tác phẩm của em học sinh đã chạm tới một vấn đề triết học 
-               lớn: Trí tưởng tượng của con người về tương lai của chính mình đã được sản tạo ra 
-               như thế nào?... <Link>See More</Link> </p>
-            </BlogItem>
-          </div>
-          <div className="blogs_left_item">
-            <img className="item-img" src={image1} />
-            <BlogItem>
-              <p className="blog-content">“Mô tả em năm 100 tuổi.” Đó là đề bài Mỹ thuật của một
-               trường tiểu học nọ. Với thái độ thẳng thắn và duy lý, một em học sinh vẽ vào giữa 
-               bức tranh bia mộ của chính mình. Trong khi cô giáo cho tác phẩm điểm 2 và nói cần 
-               xem lại đề bài, tôi thấy tác phẩm của em học sinh đã chạm tới một vấn đề triết học 
-               lớn: Trí tưởng tượng của con người về tương lai của chính mình đã được sản tạo ra 
-               như thế nào?... <Link>See More</Link> </p>
-            </BlogItem>
-          </div>
-          <div className="blogs_left_item">
-            <img className="item-img" src={image1} />
-            <BlogItem>
-              <p className="blog-content">“Mô tả em năm 100 tuổi.” Đó là đề bài Mỹ thuật của một
-               trường tiểu học nọ. Với thái độ thẳng thắn và duy lý, một em học sinh vẽ vào giữa 
-               bức tranh bia mộ của chính mình. Trong khi cô giáo cho tác phẩm điểm 2 và nói cần 
-               xem lại đề bài, tôi thấy tác phẩm của em học sinh đã chạm tới một vấn đề triết học 
-               lớn: Trí tưởng tượng của con người về tương lai của chính mình đã được sản tạo ra 
-               như thế nào?... <Link>See More</Link> </p>
-            </BlogItem>
-          </div>
+          {blogs.map(blog => (
+            <div className="blogs_left_item" key={blog.id} >
+              <img className="item-img" src={blog.image} />
+              <BlogItem
+                title={blog.title}
+                release={blog.release.slice(0, 10)}
+              >
+                <p className="blog-content">
+                  {blog.content.slice(0, 300)}...
+                  <Link to="/">See More</Link>
+                </p>
+              </BlogItem>
+            </div>
+          ))}
         </div>
         <div className="blogs_right">
           <BrowserRouter>
@@ -103,22 +81,15 @@ class Blogs extends React.Component {
             </div>
           </BrowserRouter>
           <div className="blog-list">
-            <div className="category-blog-item">
-              <img className="blog-item-img" src={image1} />
-              <BlogItem></BlogItem>
-            </div>
-            <div className="category-blog-item">
-              <img className="blog-item-img" src={image1} />
-              <BlogItem></BlogItem>
-            </div>
-            <div className="category-blog-item">
-              <img className="blog-item-img" src={image1} />
-              <BlogItem></BlogItem>
-            </div>
-            <div className="category-blog-item">
-              <img className="blog-item-img" src={image1} />
-              <BlogItem></BlogItem>
-            </div>
+            {lastNewBlogs.map(blog => (
+              <div className="category-blog-item" key={blog.id}>
+                <img className="blog-item-img" src={blog.image} />
+                <BlogItem
+                  title={blog.title}
+                  release={blog.release.slice(0, 10)}
+                ></BlogItem>
+              </div>
+            ))}
           </div>
         </div>
       </div>
