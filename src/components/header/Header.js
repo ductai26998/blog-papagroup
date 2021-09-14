@@ -5,6 +5,7 @@ import NavGuest from '../navbars/navGuest/NavGuest';
 import HotTopic from "../subTitleHotTopic/HotTopic";
 import LoginBtn from "../buttons/loginBtn/LoginBtn";
 import RegisterBtn from "../buttons/registerBtn/RegisterBtn";
+import PostBtn from "../buttons/postBlog/PostBtn";
 
 class Header extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class Header extends React.Component {
           <div className="header-nav_btn">
             <LoginBtn></LoginBtn>
             <RegisterBtn></RegisterBtn>
+            <PostBtn></PostBtn>
           </div>
         </div>
         <hr className="header_boundary"></hr>

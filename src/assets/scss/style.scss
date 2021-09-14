@@ -6,6 +6,9 @@ $blueColor: #587c8b;
 $coverColor: #f2ece8;
 $blogContentColor: #646464;
 
+$font-1: 'Acme';
+$font-2: 'Libre Baskerville';
+
 * {
     letter-spacing: 0px;
     line-height: 1.6;
@@ -31,4 +34,12 @@ $blogContentColor: #646464;
 @mixin rightPage {
     width: 25vw;
     padding-right: 2vw;
+}
+
+@mixin triangle($size, $color) {
+    width: 0;
+    height: 0;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
 }

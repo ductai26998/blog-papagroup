@@ -14,7 +14,7 @@ import Register from "../pages/register/Register";
 
 
 // const LayoutHaveHeader = HaveHeader();
-const LayoutNoHeader = NoHeader(Login, Register)
+// const LayoutNoHeader = NoHeader(Login, Register)
 
 function GetCurrentRoute() {
   const location = useLocation();
@@ -46,7 +46,7 @@ function App() {
         popular: popular,
         lastNewBlogs: lastNewBlogs
         }}></HaveHeader>}
-      {!haveHeader && <LayoutNoHeader></LayoutNoHeader>}
+      {!haveHeader && <NoHeader></NoHeader>}
     </div>
   );
 }

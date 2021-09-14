@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './LoginBtn.scss';
+import './PostBtn.scss';
 
-class LoginBtn extends React.Component {
+class PostBtn extends React.Component {
   render() {
     return (
       <div className="btn-container">
-          <Link to="/login">Sign In</Link>
+          <Link to="/postBlog">Post new blog</Link>
       </div>
     );
   }
 }
 
-export default LoginBtn;
+export default PostBtn;
