@@ -25,18 +25,27 @@ function GetCurrentRoute() {
 function App() {
   const [blogs, setBlogs] = useState([]);
 
-  useEffect(() => {
-    return axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/blogs')
-    .then((res) => {
-        setBlogs(res.data);
-    });
+  useEffect(async () => {
+    const res = await axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/blogs');
+    setBlogs(res.data);
   }, []);
 
   let currentRoute = GetCurrentRoute();
   let haveHeader = (currentRoute != '/login' && currentRoute != '/register') ? true : false; 
+  
+  const popular = blogs.filter((blog) => {
+    return blog.isPopular;
+  });
+  let numOfBlogs = blogs.length;
+  const lastNewBlogs = [...blogs.slice(numOfBlogs - 4)];
+
   return (
     <div className="app">
-      {haveHeader && <HaveHeader blogs={blogs}></HaveHeader>}
+      {haveHeader && <HaveHeader data={{
+        blogs: blogs,
+        popular: popular,
+        lastNewBlogs: lastNewBlogs
+        }}></HaveHeader>}
       {!haveHeader && <LayoutNoHeader></LayoutNoHeader>}
     </div>
   );

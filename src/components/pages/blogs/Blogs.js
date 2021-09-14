@@ -1,46 +1,16 @@
 import React from "react";
 import './Blogs.scss';
-import image1 from '../../../assets/images/middle.jpg';
 
 import BlogItem from "../../blogItem/BlogItem";
 import { BrowserRouter, NavLink, Link } from "react-router-dom";
-import axios from "axios";
 
 class Blogs extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      // blogs: [],
-      lastNewBlogs: [],
-      popular: []
-    }
   }
 
-  // componentDidMount() {
-  //   this.getState();
-  // }
-
-  // getState() {
-  //   axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/blogs')
-  //     .then((res) => {
-  //       let numOfBlogs = res.data.length;
-  //       let popular = res.data.filter((blog) => {
-  //         return blog.isPopular;
-  //       });
-  //       this.setState({
-  //         blogs: [...res.data],
-  //         lastNewBlogs: [...res.data.slice(numOfBlogs - 4)],
-  //         popular: [...popular]
-  //       });
-  //     });
-  // }
-
   render() {
-    // const { blogs, lastNewBlogs } = this.state;
-    const { blogs } = this.props;
-    let numOfBlogs = blogs.length;
-    const lastNewBlogs = [...blogs.slice(numOfBlogs - 4)];
+    const {blogs, popular, lastNewBlogs} = this.props.data;
 
     return (
       <div className="blogs">

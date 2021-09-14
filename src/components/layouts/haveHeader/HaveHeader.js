@@ -9,12 +9,12 @@ import Blogs from "../../pages/blogs/Blogs";
 function HaveHeader(props) {
   return (
     <div>
-      <Header></Header>
+      <Header data={props.data}></Header>
       <Route path="/" exact >
-        <Home blogs={props.blogs} />
+        <Home data={props.data} />
       </Route>
       <Route path="/blogs" exact >
-        <Blogs blogs={props.blogs} />
+        <Blogs data={props.data} />
       </Route>
     </div>
   );

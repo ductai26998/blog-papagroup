@@ -1,6 +1,5 @@
 import React from "react";
 import './Home.scss';
-import image1 from '../../assets/images/middle.jpg';
 
 import BlogItem from "../blogItem/BlogItem";
 import HotTopic from "../subTitleHotTopic/HotTopic";
@@ -13,14 +12,8 @@ class Home extends React.Component {
   }
 
   render() {
-    const { blogs } = this.props;
-    const popular = blogs.filter((blog) => {
-      return blog.isPopular;
-    });
-    let numOfBlogs = blogs.length;
-    const lastNewBlogs = [...blogs.slice(numOfBlogs - 4)];
+    const {blogs, popular, lastNewBlogs} = this.props.data;
 
-    console.log("popular" + popular);
     return (
       <div className="home">
         <div className="home_left">
@@ -35,7 +28,11 @@ class Home extends React.Component {
               </div>
             ))}
           </div>
-          <div className="home_middle"></div>
+          <div className="home_middle"
+            style={{
+              backgroundImage: popular[0] ? `url(${popular[0].image})` : ''
+            }}
+          ></div>
         </div>
         <div className="home_right">
           <BrowserRouter>
