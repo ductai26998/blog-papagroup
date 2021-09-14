@@ -7,28 +7,33 @@ import HotTopic from "../subTitleHotTopic/HotTopic";
 import { BrowserRouter, NavLink } from "react-router-dom";
 
 class Home extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
   }
 
   render() {
+    const { blogs } = this.props;
+    const popular = blogs.filter((blog) => {
+      return blog.isPopular;
+    });
+    let numOfBlogs = blogs.length;
+    const lastNewBlogs = [...blogs.slice(numOfBlogs - 4)];
+
+    console.log("popular" + popular);
     return (
       <div className="home">
         <div className="home_left">
           <div className="hot-topic">
-            <div className="hot-topic-item">
-              <HotTopic></HotTopic>
-              <BlogItem></BlogItem>
-            </div>
-            <div className="hot-topic-item">
-              <HotTopic></HotTopic>
-              <BlogItem></BlogItem>
-            </div>
-            <div className="hot-topic-item">
-              <HotTopic></HotTopic>
-              <BlogItem></BlogItem>
-            </div>
+            {popular.map(blog => (
+              <div className="hot-topic-item" key={blog.id}>
+                <HotTopic></HotTopic>
+                <BlogItem
+                  title={blog.title}
+                  release={blog.release.slice(0, 10)}
+                ></BlogItem>
+              </div>
+            ))}
           </div>
           <div className="home_middle"></div>
         </div>
@@ -42,33 +47,26 @@ class Home extends React.Component {
                   ><span className="nav-item-text">LAST NEWS</span></NavLink>
                 </li>
                 <li className="nav-item">
-                <NavLink to="/"
+                  <NavLink to="/"
                   ><span className="nav-item-text">POPULAR</span></NavLink>
                 </li>
                 <li className="nav-item">
-                <NavLink to="/"
+                  <NavLink to="/"
                   >TOPIC</NavLink>
                 </li>
               </ul>
             </div>
           </BrowserRouter>
           <div className="blog-list">
-            <div className="category-blog-item">
-              <img className="blog-item-img" src={image1} />
-              <BlogItem></BlogItem>
-            </div>
-            <div className="category-blog-item">
-              <img className="blog-item-img" src={image1} />
-              <BlogItem></BlogItem>
-            </div>
-            <div className="category-blog-item">
-              <img className="blog-item-img" src={image1} />
-              <BlogItem></BlogItem>
-            </div>
-            <div className="category-blog-item">
-              <img className="blog-item-img" src={image1} />
-              <BlogItem></BlogItem>
-            </div>
+            {lastNewBlogs.map(blog => (
+              <div className="category-blog-item" key={blog.id}>
+                <img className="blog-item-img" src={blog.image} />
+                <BlogItem
+                  title={blog.title}
+                  release={blog.release.slice(0, 10)}
+                ></BlogItem>
+              </div>
+            ))}
           </div>
         </div>
       </div>
