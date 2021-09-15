@@ -8,10 +8,6 @@ import RegisterBtn from "../buttons/registerBtn/RegisterBtn";
 import PostBtn from "../buttons/postBlog/PostBtn";
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {blogs, popular, lastNewBlogs} = this.props.data;
 
