@@ -1,11 +1,14 @@
 import axios from "axios";
 import React from "react";
+import Loading from "../../loading/Loading";
 import './PostBlog.scss';
 
 class PostBlog extends React.Component {
   constructor(props) {
     super(props);
 
+    // loading variable decision either show loading animation or not 
+    this.loadingClassName = "hidden";
     // initial variable to receive the value of input
     this.title = "";
     this.content = "";
@@ -35,6 +38,10 @@ class PostBlog extends React.Component {
     if (error) {
       alert(error);
     } else {
+      // show loading screen
+      const loading = document.querySelector('.loading');
+      loading.classList.add('show');
+
       const date = new Date();
       const release = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
       const newBlog = {
@@ -68,41 +75,45 @@ class PostBlog extends React.Component {
 
   render() {
     return (
-      <div className="post-container container">
-        <div className="post-container__header">
-          <div className="page-logo"><span className="logo-text">STORY</span></div>
-          <h3 className="post-title">Post to blogs</h3>
-        </div>
-        <form onSubmit={this.post} className="post-container__form">
-          <div className="blog-title">
-            <label>Title: </label>
-            <input
-              id="input-title"
-              className="input-title"
-              type="text"
-              placeholder="Your blog title"
-              onKeyUp={this.onKeyUp}
-            />
+      <div>
+        <div className="post-container container">
+          <div className="post-container__header">
+            <div className="page-logo"><span className="logo-text">STORY</span></div>
+            <h3 className="post-title">Post to blogs</h3>
           </div>
-          <div className="post-option">
-            <div className="post-option__content"></div>
-          </div>
-          <div className="post-box">
-            <div className="post-box__text" v-show="inTextInput">
-              <textarea
-                name=""
-                id="input-content"
-                className="post-box__text--input"
-                cols="30"
-                rows="16"
+          <form onSubmit={this.post} className="post-container__form">
+            <div className="blog-title">
+              <label>Title: </label>
+              <input
+                id="input-title"
+                className="input-title"
+                type="text"
+                placeholder="Your blog title"
                 onKeyUp={this.onKeyUp}
-              ></textarea>
+              />
             </div>
-            <div className="post-box__send">
-              <button type="submit" className="btn-send"></button>
+            <div className="post-option">
+              <div className="post-option__content"></div>
             </div>
-          </div>
-        </form>
+            <div className="post-box">
+              <div className="post-box__text" v-show="inTextInput">
+                <textarea
+                  name=""
+                  id="input-content"
+                  className="post-box__text--input"
+                  cols="30"
+                  rows="16"
+                  onKeyUp={this.onKeyUp}
+                ></textarea>
+              </div>
+              <div className="post-box__send">
+                <button type="submit" className="btn-send"></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="loading"><Loading /></div>
+        {/* {this.loading && <div className="loading"><Loading /></div>} */}
       </div>
     );
   }

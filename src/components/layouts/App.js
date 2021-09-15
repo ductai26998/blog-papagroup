@@ -21,12 +21,15 @@ function App() {
     setBlogs(res.data.reverse());
   }, []);
 
+  // get current route to set layout based on route of page
   let currentRoute = GetCurrentRoute();
   let haveHeader = (currentRoute != '/login' && currentRoute != '/register') ? true : false; 
   
+  // filter the pupular blogs with condition blogItem.popular == true
   const popular = blogs.filter((blog) => {
     return blog.isPopular;
   });
+  // get 4 blog newest
   const lastNewBlogs = [...blogs.slice(0, 4)];
 
   return (
