@@ -1,12 +1,12 @@
 import axios from "axios";
 import React from "react";
-import { Link } from "react-router-dom";
 import './PostBlog.scss';
 
 class PostBlog extends React.Component {
   constructor(props) {
     super(props);
 
+    // initial variable to receive the value of input
     this.title = "";
     this.content = "";
 
@@ -14,27 +14,50 @@ class PostBlog extends React.Component {
     this.post = this.post.bind(this);
   }
 
-  post = (event) => {
+  validate() {
+    // validate the input value
+    let error = "";
+    if (!this.title.trim()) {
+      error += "Title can not empty!!!";
+    }
+    if (!this.content.trim()) {
+      error += "\n Content can not empty!!!";
+    }
+    return error;
+  }
+
+  post(event) {
     // prevent auto submit when new blog is not posted
     event.preventDefault();
 
-    const date = new Date();
-    const release = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-    const newBlog = {
-      title: this.title,
-      content: this.content,
-      release: release
-    }
+    // validate the input value
+    let error = this.validate();
+    if (error) {
+      alert(error);
+    } else {
+      const date = new Date();
+      const release = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      const newBlog = {
+        title: this.title,
+        content: this.content,
+        release: release // release date
+      }
 
-    axios.post('https://606b20daf8678400172e5aff.mockapi.io/users/blogs', newBlog)
-      .then((response) => {
-        window.location.href = "/blogs";
-      }).catch((error) => {
-        alert(error);
-      });
+      // Post new blog to mockapi
+      axios.post('https://606b20daf8678400172e5aff.mockapi.io/users/blogs', newBlog)
+        .then((response) => {
+          window.location.href = "/blogs";
+        }).catch((err) => {
+          alert(err);
+        });
+    }
   }
 
   onKeyUp(event) {
+    /* 
+      get new value when the value of input changes and
+      assign it for the initialized variable in constructor
+    */
     let target = event.target.id;
     if (target == 'input-title') {
       this.title = event.target.value;
@@ -44,7 +67,6 @@ class PostBlog extends React.Component {
   }
 
   render() {
-    console.log("render");
     return (
       <div className="post-container container">
         <div className="post-container__header">
