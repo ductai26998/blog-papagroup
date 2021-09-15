@@ -7,8 +7,6 @@ class PostBlog extends React.Component {
   constructor(props) {
     super(props);
 
-    // loading variable decision either show loading animation or not 
-    this.loadingClassName = "hidden";
     // initial variable to receive the value of input
     this.title = "";
     this.content = "";
@@ -113,7 +111,6 @@ class PostBlog extends React.Component {
           </form>
         </div>
         <div className="loading"><Loading /></div>
-        {/* {this.loading && <div className="loading"><Loading /></div>} */}
       </div>
     );
   }

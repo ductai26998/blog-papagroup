@@ -3,16 +3,22 @@ import './Blogs.scss';
 
 import BlogItem from "../../blogItem/BlogItem";
 import { BrowserRouter, NavLink, Link } from "react-router-dom";
+import Loading from "../../loading/Loading";
 
 class Blogs extends React.Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    setTimeout(() => {
+      // show loading screen
+      const loading = document.querySelector('.loading');
+      loading.classList.remove('show');
+    }, 5000);
   }
 
   render() {
     const {blogs, popular, lastNewBlogs} = this.props.data;
 
     return (
+      <div>
       <div className="blogs">
         <div className="blogs_left">
           {blogs.map(blog => (
@@ -62,6 +68,8 @@ class Blogs extends React.Component {
             ))}
           </div>
         </div>
+      </div>
+      <div className="loading show"><Loading /></div>
       </div>
     );
   }
