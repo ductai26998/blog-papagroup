@@ -7,15 +7,6 @@ import NoHeader from "./noHeader/NoHeader";
 
 import { useLocation } from "react-router-dom";
 
-import Home from "../pages/Home";
-import Blogs from "../pages/blogs/Blogs";
-import Login from "../pages/login/Login";
-import Register from "../pages/register/Register";
-
-
-// const LayoutHaveHeader = HaveHeader();
-// const LayoutNoHeader = NoHeader(Login, Register)
-
 function GetCurrentRoute() {
   const location = useLocation();
   return location.pathname
@@ -27,7 +18,7 @@ function App() {
 
   useEffect(async () => {
     const res = await axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/blogs');
-    setBlogs(res.data);
+    setBlogs(res.data.reverse());
   }, []);
 
   let currentRoute = GetCurrentRoute();
@@ -36,8 +27,7 @@ function App() {
   const popular = blogs.filter((blog) => {
     return blog.isPopular;
   });
-  let numOfBlogs = blogs.length;
-  const lastNewBlogs = [...blogs.slice(numOfBlogs - 4)];
+  const lastNewBlogs = [...blogs.slice(0, 4)];
 
   return (
     <div className="app">
