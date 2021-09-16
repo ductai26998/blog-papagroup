@@ -1,9 +1,9 @@
 import React from "react";
-import './NavGuest.scss';
+import './Navbar.scss';
 
 import { NavLink } from "react-router-dom";
 
-class NavGuest extends React.Component {
+class Navbar extends React.Component {
   constructor() {
     super();
 
@@ -30,4 +30,4 @@ class NavGuest extends React.Component {
   }
 }
 
-export default NavGuest;
+export default Navbar;

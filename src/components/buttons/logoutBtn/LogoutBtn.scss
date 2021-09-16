@@ -1,0 +1,10 @@
+@import '../../../assets/scss/style.scss';
+
+.logout-btn {
+    cursor: pointer;
+}
+
+.btn-container .logout-btn:hover {
+    color: $blueColor;
+    border: none;
+}
