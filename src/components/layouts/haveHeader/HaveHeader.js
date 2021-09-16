@@ -9,8 +9,7 @@ import PostBlog from "../../pages/postBlog/PostBlog";
 
 // higher-order component to can use Hooks
 function HaveHeader(props) {
-  const [cookies] = useCookies(['accessToken']);
-  console.log(cookies.accessToken);
+  const [cookies, setCookie] = useCookies(['accessToken']);
 
   return (
     <div style={{ position: 'relative' }}>

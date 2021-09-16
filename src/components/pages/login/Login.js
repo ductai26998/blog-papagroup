@@ -39,12 +39,6 @@ function validate() {
 export default function Login() {
   const [cookies, setCookie] = useCookies(['accessToken']);
 
-  // onKeyUp = onKeyUp.bind(this);
-
-  useEffect(() => {
-    
-  }, []);
-
   let signIn = (event) => {
     // prevent auto submit when sign in
     event.preventDefault();
@@ -82,9 +76,8 @@ export default function Login() {
 
   return (
     <div>
-      <div className="wrapper">
+      <div className="wrapper-login">
         <div className="mycontainer">
-          <div className="container__left"></div>
           <div className="container__right">
             <Link to="/" ><h5 className="go-home">Go to Home</h5></Link>
             <h3 className="title">STORY</h3>
