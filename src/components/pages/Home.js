@@ -29,6 +29,7 @@ class Home extends React.Component {
                   <BlogItem
                     title={blog.title}
                     release={blog.release.slice(0, 10)}
+                    author={blog.author}
                   ></BlogItem>
                 </div>
               ))}
@@ -66,6 +67,7 @@ class Home extends React.Component {
                   <BlogItem
                     title={blog.title}
                     release={blog.release.slice(0, 10)}
+                    author={blog.author}
                   ></BlogItem>
                 </div>
               ))}

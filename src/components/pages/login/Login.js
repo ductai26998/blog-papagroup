@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from 'react-cookie';
@@ -51,13 +51,17 @@ export default function Login() {
     loading.classList.add('show');
 
     // check username and passord from database
-    axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/users')
+    axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/users', {
+      params: {
+        username: username
+      }
+    })
       .then((response) => {
-        let userCurrent = response.data.find((user) => user.username == username);
-        if (!userCurrent) {
+        let currentUser = response.data.find((user) => user.username == username);
+        if (!currentUser) {
           error += "\n Username is wrong!!!";
         } else {
-          if (userCurrent.password !== password) {
+          if (currentUser.password !== password) {
             error += "\n Password is wrong!!!";
           }
         }
@@ -66,7 +70,7 @@ export default function Login() {
           alert(error);
           loading.classList.remove('show');
         } else {
-          setCookie('accessToken', userCurrent.id);
+          setCookie('accessToken', currentUser.id);
           window.location.href = "/";
         }
       }).catch((err) => {

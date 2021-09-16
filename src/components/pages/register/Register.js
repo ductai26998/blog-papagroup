@@ -56,7 +56,11 @@ export default function Register() {
     }
 
     // check username either exist in database or not
-    axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/users')
+    axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/users', {
+      params: {
+        username: username
+      }
+    })
       .then((response) => {
         let userCheck = response.data.find((user) => user.username == username);
         if (userCheck) {

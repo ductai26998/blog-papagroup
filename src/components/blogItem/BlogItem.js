@@ -7,7 +7,7 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    const { title, release } = this.props;
+    const { title, release, author } = this.props;
 
     return (
       <div className="blog-item">
@@ -17,7 +17,7 @@ class BlogItem extends React.Component {
         {this.props.children}
         <div className="blog-info">
           <span className="blog-info_time">Upload at {release} by </span>
-          <span className="blog-info_author">Ductai</span>
+          <span className="blog-info_author">{author}</span>
         </div>
       </div>
     );

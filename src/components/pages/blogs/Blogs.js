@@ -27,6 +27,7 @@ class Blogs extends React.Component {
               <BlogItem
                 title={blog.title}
                 release={blog.release.slice(0, 10)}
+                author={blog.author}
               >
                 <p className="blog-content">
                   {blog.content.slice(0, 300)}...
@@ -63,6 +64,7 @@ class Blogs extends React.Component {
                 <BlogItem
                   title={blog.title}
                   release={blog.release.slice(0, 10)}
+                  author={blog.author}
                 ></BlogItem>
               </div>
             ))}
