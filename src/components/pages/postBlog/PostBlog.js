@@ -72,7 +72,7 @@ export default function PostBlog(props) {
   const [cookies] = useCookies(['accessToken']);
 
   useEffect(() => {
-    axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/users/1')
+    axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/users/' + cookies.accessToken)
       .then((response) => {
         console.log(response.data);
         currentUser = response.data;
