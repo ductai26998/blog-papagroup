@@ -12,7 +12,7 @@ class Home extends React.Component {
       // show loading screen
       const loading = document.querySelector('.loading');
       loading.classList.remove('show');
-    }, 5000);
+    }, 3000);
   }
 
   render() {

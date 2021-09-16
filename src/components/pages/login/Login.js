@@ -1,19 +1,87 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useCookies } from 'react-cookie';
+
+import Loading from "../../loading/Loading";
+
 import './Login.scss';
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
+// initialize the variables receive content of the inputs
+var username = "";
+var password = "";
 
-    this.state = {
-      email: "",
-      password: ""
-    }
+function onKeyUp(event) {
+  /* 
+    get new value when the value of input changes and
+    assign it for the initialized variable in constructor
+  */
+  let target = event.target.id;
+  if (target == 'input-username') {
+    username = event.target.value;
+  } else {
+    password = event.target.value;
+  }
+}
+
+function validate() {
+  // validate the input value
+  let error = "";
+  if (!username.trim()) {
+    error += "Username can not be empty!!!";
+  }
+  if (!password.trim()) {
+    error += "\n Password can not be empty!!!";
+  }
+  return error;
+}
+
+export default function Login() {
+  const [cookies, setCookie] = useCookies(['accessToken']);
+
+  // onKeyUp = onKeyUp.bind(this);
+
+  useEffect(() => {
+    
+  }, []);
+
+  let signIn = (event) => {
+    // prevent auto submit when sign in
+    event.preventDefault();
+
+    // validate the input value
+    var error = validate();
+
+    // show loading screen
+    const loading = document.querySelector('.loading');
+    loading.classList.add('show');
+
+    // check username and passord from database
+    axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/users')
+      .then((response) => {
+        let userCurrent = response.data.find((user) => user.username == username);
+        if (!userCurrent) {
+          error += "\n Username is wrong!!!";
+        } else {
+          if (userCurrent.password !== password) {
+            error += "\n Password is wrong!!!";
+          }
+        }
+
+        if (error) {
+          alert(error);
+          loading.classList.remove('show');
+        } else {
+          setCookie('accessToken', userCurrent.id);
+          window.location.href = "/";
+        }
+      }).catch((err) => {
+        alert(err);
+      });
   }
 
-  render() {
-    return (
+  return (
+    <div>
       <div className="wrapper">
         <div className="mycontainer">
           <div className="container__left"></div>
@@ -21,11 +89,11 @@ class Login extends React.Component {
             <Link to="/" ><h5 className="go-home">Go to Home</h5></Link>
             <h3 className="title">STORY</h3>
             <h5 className="welcome">Welcome to STORY</h5>
-            <form>
+            <form onSubmit={signIn}>
               <label>Username</label>
-              <input type="text" placeholder="Email" />
+              <input id="input-username" type="text" placeholder="Username" onKeyUp={onKeyUp} />
               <label>Password</label>
-              <input type="password" placeholder="Password" />
+              <input id="input-password" type="password" placeholder="Password" onKeyUp={onKeyUp} />
               <span>Forgot password?</span>
               <div className="submit">
                 <button type="submit">Sign in</button>
@@ -41,8 +109,7 @@ class Login extends React.Component {
           </div>
         </div>
       </div >
-    );
-  }
-}
-
-export default Login;
+      <div className="loading"><Loading /></div>
+    </div>
+  );
+};

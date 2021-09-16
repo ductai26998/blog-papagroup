@@ -19,10 +19,10 @@ class PostBlog extends React.Component {
     // validate the input value
     let error = "";
     if (!this.title.trim()) {
-      error += "Title can not empty!!!";
+      error += "Title can not be empty!!!";
     }
     if (!this.content.trim()) {
-      error += "\n Content can not empty!!!";
+      error += "\n Content can not be empty!!!";
     }
     return error;
   }

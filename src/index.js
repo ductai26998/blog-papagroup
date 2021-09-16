@@ -6,12 +6,15 @@ import App from './components/layouts/App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from "react-router-dom";
+import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render((
   <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <CookiesProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </CookiesProvider>
   </BrowserRouter>),
   document.getElementById('root')
 );
