@@ -7,6 +7,15 @@
     padding-top: 50px;
 }
 
+@media screen and (max-width: 750px) {
+    .home_left {
+        width: 100% !important;
+    }
+    .home_right {
+        display: none !important;
+    }
+}
+
 .home_left {
     @include leftPage;
     display: flex;
