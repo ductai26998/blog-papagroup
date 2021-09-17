@@ -41,11 +41,24 @@ export default function Header(props) {
       </div>
       <div className className="header-nav">
         <Navbar></Navbar>
-        <div className="header-nav_btn">
-          {hiddenLogoutBtn && <LoginBtn></LoginBtn>}
-          {hiddenLogoutBtn && <RegisterBtn></RegisterBtn>}
-          {!hiddenLogoutBtn && <LogoutBtn />}
-          <PostBtn></PostBtn>
+        <div className="header-nav_right">
+          <div className="header-nav_btn">
+            {hiddenLogoutBtn && <LoginBtn></LoginBtn>}
+            {hiddenLogoutBtn && <RegisterBtn></RegisterBtn>}
+            {!hiddenLogoutBtn && <LogoutBtn />}
+            <PostBtn></PostBtn>
+          </div>
+          <div className="dropdown">
+            <div className="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </div>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li className="menu-item">{hiddenLogoutBtn && <LoginBtn></LoginBtn>}</li>
+              <li className="menu-item">{hiddenLogoutBtn && <RegisterBtn></RegisterBtn>}</li>
+              <li className="menu-item">{!hiddenLogoutBtn && <LogoutBtn />}</li>
+              <li className="menu-item"><PostBtn></PostBtn></li>
+            </ul>
+          </div>
         </div>
       </div>
       <hr className="header_boundary"></hr>

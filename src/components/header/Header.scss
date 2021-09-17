@@ -8,6 +8,7 @@
   background-image: url("../../assets/images/cover1.jpg");
   background-size: cover;
   letter-spacing: 0.5px;
+  z-index: 3;
 
   .logo {
   }
@@ -25,15 +26,52 @@
     flex-direction: row;
   }
 
+  .header-nav_right {
+    display: flex;
+    align-items: center;
+  }
+
   .header-nav_btn {
     @include rightPage;
     display: flex;
     flex-direction: row;
   }
 
+  .dropdown {
+    display: none;
+
+    .btn {
+      background-color: transparent !important;
+      color: $redColor;
+      border: none;
+      outline: none;
+    }
+    .btn:hover {
+      color: $blueColor;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.658) !important;
+  }
+
+  .btn-container {
+    margin: 0 !important;
+  }
+
+  @media screen and (max-width: 750px) {
+    .header-nav_btn {
+      display: none !important;
+    }
+    .dropdown {
+      display: block !important;
+    }
+  }
+
   .header_boundary {
     color: #fff;
     margin: 0;
+    z-index: 2;
   }
 
   .top-topic {
@@ -43,6 +81,7 @@
     height: 250px;
     width: 100%;
     color: #fff;
+    z-index: 1;
   }
 
   .top-topic * {
@@ -71,7 +110,7 @@
   }
 
   .right_item_title {
-    @include textStyle(#fff, 15px, 'Libre Baskerville', 600);
+    @include textStyle(#fff, 15px, "Libre Baskerville", 600);
   }
 }
 
