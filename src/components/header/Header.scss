@@ -55,16 +55,15 @@
     background-color: rgba(255, 255, 255, 0.658) !important;
   }
 
-  .btn-container {
-    margin: 0 !important;
-  }
-
   @media screen and (max-width: 750px) {
     .header-nav_btn {
       display: none !important;
     }
     .dropdown {
       display: block !important;
+    }
+    .btn-container {
+      margin: 0 !important;
     }
   }
 
