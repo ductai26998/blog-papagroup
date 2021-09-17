@@ -2,11 +2,6 @@ import React from "react";
 import './HotTopic.scss';
 
 class HotTopic extends React.Component {
-  constructor() {
-    super();
-
-  }
-
   render() {
     return (
       <h6 className="hot-topic_sub-title">

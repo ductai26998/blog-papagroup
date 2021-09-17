@@ -11,26 +11,32 @@ import PostBlog from "../../pages/postBlog/PostBlog";
 function HaveHeader(props) {
   const [cookies, setCookie] = useCookies(['accessToken']);
 
+  const style = {
+    paddingBottom: '50px',
+    backgroundColor: '#f2ece8'
+  }
   return (
     <div style={{ position: 'relative' }}>
-      <Header data={props.data}></Header>
-      <div style={{
-        paddingBottom: '50px',
-        backgroundColor: '#f2ece8'
+      <Route path="/" exact >
+        <div style={style}>
+          <Header data={props.data}></Header>
+          <Home data={props.data} />
+        </div>
+      </Route>
+      <Route path="/blogs" exact >
+        <div style={style}>
+          <Header data={props.data}></Header>
+          <Blogs data={props.data} />
+        </div>
+      </Route>
+      <Route path="/postBlog" exact render={() => {
+        return cookies.accessToken ?
+          <div style={style}>
+            <Header data={props.data}></Header>
+            <PostBlog />
+          </div> : <Redirect to="/login" />;
       }}>
-        {/* <Switch> */}
-          <Route path="/" exact >
-            <Home data={props.data} />
-          </Route>
-          <Route path="/blogs" exact >
-            <Blogs data={props.data} />
-          </Route>
-          <Route path="/postBlog" exact render={() => {
-            return cookies.accessToken ? <PostBlog/> : <Redirect to="/login" />;
-          }}>
-          </Route>
-        {/* </Switch> */}
-      </div>
+      </Route>
     </div >
   );
 

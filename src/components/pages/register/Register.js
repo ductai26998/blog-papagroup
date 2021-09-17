@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import './Register.scss';
 import axios from "axios";
 import Loading from "../../loading/Loading";
@@ -40,6 +40,8 @@ function validate() {
 }
 
 export default function Register() {
+  let history = useHistory();
+
   let signUp = (event) => {
     // prevent auto submit when sign in
     event.preventDefault();
@@ -77,7 +79,8 @@ export default function Register() {
           })
           .then((response) => {
             alert("Register success");
-            window.location.href = "/login";
+            history.replace("/login");
+            // history.location.curr
           })
     
         }

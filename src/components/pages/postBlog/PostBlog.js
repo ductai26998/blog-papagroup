@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useEffect} from "react";
 import { useCookies } from 'react-cookie';
+import { useHistory } from "react-router-dom";
 
 import Loading from "../../loading/Loading";
 import './PostBlog.scss';
@@ -23,38 +24,6 @@ function validate() {
   return error;
 }
 
-function post(event) {
-  // prevent auto submit when new blog is not posted
-  event.preventDefault();
-
-  // validate the input value
-  let error = validate();
-  if (error) {
-    alert(error);
-  } else {
-    // show loading screen
-    const loading = document.querySelector('.loading');
-    loading.classList.add('show');
-
-    const date = new Date();
-    const release = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-    const newBlog = {
-      title: title,
-      content: content,
-      author: currentUser.username,
-      release: release // release date
-    }
-
-    // Post new blog to mockapi
-    axios.post('https://606b20daf8678400172e5aff.mockapi.io/users/blogs', newBlog)
-      .then((response) => {
-        window.location.href = "/blogs";
-      }).catch((err) => {
-        alert(err);
-      });
-  }
-}
-
 function onKeyUp(event) {
   /* 
     get new value when the value of input changes and
@@ -69,17 +38,50 @@ function onKeyUp(event) {
 }
 
 export default function PostBlog(props) {
-  const [cookies] = useCookies(['accessToken']);
+  const [cookies, setCookie] = useCookies(['accessToken']);
+  let history = useHistory();
 
   useEffect(() => {
     axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/users/' + cookies.accessToken)
       .then((response) => {
-        console.log(response.data);
         currentUser = response.data;
       }).catch((err) => {
         alert(err);
       });
   });
+
+  let post = (event) => {
+    // prevent auto submit when new blog is not posted
+    event.preventDefault();
+  
+    // validate the input value
+    let error = validate();
+    if (error) {
+      alert(error);
+    } else {
+      // show loading screen
+      const loading = document.querySelector('.loading');
+      loading.classList.add('show');
+  
+      const date = new Date();
+      const release = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      const newBlog = {
+        title: title,
+        content: content,
+        author: currentUser.username,
+        release: release // release date
+      }
+  
+      // Post new blog to mockapi
+      axios.post('https://606b20daf8678400172e5aff.mockapi.io/users/blogs', newBlog)
+        .then((response) => {
+          // setCookie("posted", true);
+          history.push("/blogs");
+        }).catch((err) => {
+          alert(err);
+        });
+    }
+  }
 
   return (
     <div>

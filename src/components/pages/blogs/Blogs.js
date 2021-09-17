@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Blogs.scss';
+import axios from "axios";
 
 import BlogItem from "../../blogItem/BlogItem";
 import { BrowserRouter, NavLink, Link } from "react-router-dom";
 import Loading from "../../loading/Loading";
 
-class Blogs extends React.Component {
-  componentDidMount() {
+export default function Blogs(props) {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(async () => {
+    const res = await axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/blogs');
+    setBlogs(res.data.reverse());
+
     setTimeout(() => {
       // show loading screen
       const loading = document.querySelector('.loading');
       loading.classList.remove('show');
     }, 3000);
-  }
+  }, [])
 
-  render() {
-    const {blogs, popular, lastNewBlogs} = this.props.data;
+  // filter the pupular blogs with condition blogItem.popular == true
+  const popular = blogs.filter((blog) => {
+    return blog.isPopular;
+  });
+  // get 4 blog newest
+  const lastNewBlogs = [...blogs.slice(0, 4)];
 
-    return (
-      <div>
+  return (
+    <div>
       <div className="blogs">
         <div className="blogs_left">
           {blogs.map(blog => (
@@ -72,9 +82,6 @@ class Blogs extends React.Component {
         </div>
       </div>
       <div className="loading show"><Loading /></div>
-      </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default Blogs;

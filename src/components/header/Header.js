@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './Header.scss';
 import { useCookies } from 'react-cookie';
+import axios from "axios";
 
 import Navbar from '../navbar/Navbar';
 import HotTopic from "../subTitleHotTopic/HotTopic";
@@ -9,11 +10,29 @@ import RegisterBtn from "../buttons/registerBtn/RegisterBtn";
 import PostBtn from "../buttons/postBlog/PostBtn";
 import LogoutBtn from "../buttons/logoutBtn/LogoutBtn";
 
-export default function Home(props) {
+export default function Header(props) {
   const [cookies, setCookie] = useCookies(['accessToken']);
   const hiddenLogoutBtn = cookies.accessToken ? false : true;
 
-  const { blogs, popular, lastNewBlogs } = props.data;
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(async () => {
+    const res = await axios.get('https://606b20daf8678400172e5aff.mockapi.io/users/blogs');
+    setBlogs(res.data.reverse());
+
+    setTimeout(() => {
+      // show loading screen
+      const loading = document.querySelector('.loading');
+      loading.classList.remove('show');
+    }, 3000);
+  }, [])
+
+  // filter the pupular blogs with condition blogItem.popular == true
+  const popular = blogs.filter((blog) => {
+    return blog.isPopular;
+  });
+  // get 4 blog newest
+  const lastNewBlogs = [...blogs.slice(0, 4)];
 
   return (
     <div className="header">
@@ -25,7 +44,7 @@ export default function Home(props) {
         <div className="header-nav_btn">
           {hiddenLogoutBtn && <LoginBtn></LoginBtn>}
           {hiddenLogoutBtn && <RegisterBtn></RegisterBtn>}
-          {!hiddenLogoutBtn && <LogoutBtn/>}
+          {!hiddenLogoutBtn && <LogoutBtn />}
           <PostBtn></PostBtn>
         </div>
       </div>

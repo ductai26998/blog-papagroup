@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from 'react-cookie';
 
@@ -38,6 +38,7 @@ function validate() {
 
 export default function Login() {
   const [cookies, setCookie] = useCookies(['accessToken']);
+  let history = useHistory();
 
   let signIn = (event) => {
     // prevent auto submit when sign in
@@ -71,7 +72,7 @@ export default function Login() {
           loading.classList.remove('show');
         } else {
           setCookie('accessToken', currentUser.id);
-          window.location.href = "/";
+          history.push("/");
         }
       }).catch((err) => {
         alert(err);
